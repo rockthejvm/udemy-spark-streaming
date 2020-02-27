@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:9.6
+    container_name: rockthejvm-sparkstreaming-postgres
+    environment:
+      - "TZ=Europe/Amsterdam"
+      - "POSTGRES_USER=docker"
+      - "POSTGRES_PASSWORD=docker"
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./sql:/docker-entrypoint-initdb.d"
+  cassandra:
+    image: cassandra:3
+    container_name: rockthejvm-sparkstreaming-cassandra
+    ports:
+    - "7000:7000"
+    - "9042:9042"
+    environment:
+    - "CASSANDRA_CLUSTER_NAME=OUR_DOCKERIZED_CASSANDRA_SINGLE_NODE_CLUSTER"
+  zookeeper:
+    container_name: rockthejvm-sparkstreaming-zookeeper
+    image: wurstmeister/zookeeper
+    ports:
+    - "2181:2181"
+  kafka:
+    container_name: rockthejvm-sparkstreaming-kafka
+    image: wurstmeister/kafka
+    ports:
+    - "9092:9092"
+    environment:
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS:
+        "INTERNAL://kafka:9090,\
+         EXTERNAL://:9092"
+      KAFKA_ADVERTISED_LISTENERS:
+        "INTERNAL://kafka:9090,\
+         EXTERNAL://localhost:9092"
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP:
+        "INTERNAL:PLAINTEXT,\
+         EXTERNAL:PLAINTEXT"
+      KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+  flume:
+    container_name: rockthejvm-sparkstreaming-flume
+    image: bigcontainer/flume
+    ports:
+    - "1234:1234"
+    - "1235:1235"
+    volumes:
+    - "./flume/hello-world.conf:/opt/flume/hello-world.conf"
+
