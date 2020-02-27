@@ -39,7 +39,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-streaming-kinesis-asl" % sparkVersion,
   
   /*
-    Flume only works with Spark 2.4 at the moment.
+    Flume only works with Spark 2.4.4 at the moment.
     We will uncomment when we learn how to integrate Flume with Spark. 
    */
   // "org.apache.spark" %% "spark-streaming-flume" % sparkVersion,
