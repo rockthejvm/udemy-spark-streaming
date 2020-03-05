@@ -7,4 +7,4 @@ echo "\\h		: help with SQL commands"
 echo "\\?		: help with psql commands"
 echo "\\q		: quit"
 echo "=================================================================="
-docker exec -it rtjvm-sparkstreaming-postgres psql -U docker -d rtjvm
+docker exec -it rockthejvm-sparkstreaming-postgres psql -U docker -d rtjvm
