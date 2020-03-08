@@ -17,7 +17,7 @@ object ProcessingTimeWindows {
       .option("host", "localhost")
       .option("port", 12346)
       .load()
-      .select(col("value"), current_timestamp().as("processingTime"))
+      .select(col("value"), current_timestamp().as("processingTime")) // this is how you add processing time to a record
       .groupBy(window(col("processingTime"),  "10 seconds").as("window"))
       .agg(sum(length(col("value"))).as("charCount")) // counting characters every 10 seconds by processing time
       .select(
