@@ -38,33 +38,16 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-streaming-kafka-0-10" % sparkVersion,
   "org.apache.spark" %% "spark-streaming-kinesis-asl" % sparkVersion,
   
-  /*
-    Flume only works with Spark 2.4.4 at the moment.
-    We will uncomment when we learn how to integrate Flume with Spark. 
-   */
-  // "org.apache.spark" %% "spark-streaming-flume" % sparkVersion,
-
-  // akka
-  "com.typesafe.akka" %% "akka-remote" % akkaVersion,
-  "com.typesafe.akka" %% "akka-stream" % akkaVersion,
-  "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
 
   // cassandra - this version officially works with Spark 2.4, but tested with Spark 3.0-preview as well
   "com.datastax.spark" %% "spark-cassandra-connector" % cassandraConnectorVersion,
 
   // postgres
   "org.postgresql" % "postgresql" % postgresVersion,
-
-  // twitter
-  "org.twitter4j" % "twitter4j-core" % twitter4jVersion,
-  "org.twitter4j" % "twitter4j-stream" % twitter4jVersion,
-
+  
   // logging
   "org.apache.logging.log4j" % "log4j-api" % log4jVersion,
   "org.apache.logging.log4j" % "log4j-core" % log4jVersion,
-
-  "edu.stanford.nlp" % "stanford-corenlp" % nlpLibVersion,
-  "edu.stanford.nlp" % "stanford-corenlp" % nlpLibVersion classifier "models",
 
   // kafka
   "org.apache.kafka" %% "kafka" % kafkaVersion,
