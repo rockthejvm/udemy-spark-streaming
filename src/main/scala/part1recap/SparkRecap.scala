@@ -23,8 +23,8 @@ object SparkRecap {
   // select
   val usefulCarsData = cars.select(
     col("Name"), // column object
-    $"Year" // another column object (needs spark implicits)
-      (col("Weight_in_lbs") / 2.2).as("Weight_in_kg"),
+    $"Year", // another column object (needs spark implicits)
+    (col("Weight_in_lbs") / 2.2).as("Weight_in_kg"),
     expr("Weight_in_lbs / 2.2").as("Weight_in_kg_2")
   )
 
