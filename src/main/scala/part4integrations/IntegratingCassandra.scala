@@ -11,9 +11,12 @@ object IntegratingCassandra {
   val spark = SparkSession.builder()
     .appName("Integrating Cassandra")
     .master("local[2]")
-    .config("spark.cassandra.connection.host", "localhost")
+    .config("spark.cassandra.connection.host", "127.0.0.1")
     .config("spark.cassandra.connection.port", "9042")
     .getOrCreate()
+
+  // for noisy logs
+  // spark.sparkContext.setLogLevel("WARN")
 
   import spark.implicits._
 
