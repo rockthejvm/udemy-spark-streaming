@@ -201,7 +201,7 @@ spark-warehouse/
 # For SBT
 .jvmopts
 
-# part4integrations
+# checkpoints
 /checkpoints/*
 
 # End of https://www.gitignore.io/api/sbt,scala,spark,intellij
